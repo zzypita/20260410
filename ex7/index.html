@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+  <input v-model="price" type="number" placeholder="原價" />
+  <p>原價：{{ price }} 元</p>
+  <p>打八折後：{{ discounted }} 元</p>
+  <p>含稅（5%）：{{ withTax }} 元</p>
+</div>
+<!-- 引入 Vue -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+Vue.createApp({
+  data() {
+    return { price: 100 }
+  },
+  computed: {
+    discounted() {
+      return Math.round(this.price * 0.8)
+    },
+    withTax() {
+      return Math.round(this.discounted * 1.05)
+    }
+  }
+}).mount("#app")
+</script>
+
+</body>
+</html>
