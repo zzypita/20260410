@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+  <button @click="show = !show">切換顯示</button>
+  <p v-if="show">👋 你看到我了！</p>
+  <p v-else>（已隱藏）</p>
+</div>
+ <!-- 引入 Vue -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+Vue.createApp({
+  data() {
+    return { show: true }
+  }
+}).mount("#app")
+</script>
+
+</body>
+</html>
