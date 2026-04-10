@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>待辦事項清單</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #f5f5f5;
+    }
+    h1 { color: #333; }
+    .input-area {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 16px;
+      background: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover { background: #357abd; }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      padding: 12px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .done-text {
+      text-decoration: line-through;
+      color: #aaa;
+      flex: 1;
+    }
+    .normal-text { flex: 1; }
+    .delete-btn {
+      background: #e74c3c;
+      padding: 4px 10px;
+      font-size: 13px;
+    }
+    .delete-btn:hover { background: #c0392b; }
+    .summary {
+      color: #666;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <h1>📝 待辦事項</h1>
+
+  <!-- 輸入區 -->
+  <div class="input-area">
+    <input
+      v-model="newTodo"
+      @keyup.enter="addTodo"
+      type="text"
+      placeholder="輸入待辦事項，按 Enter 新增"
+    />
+    <button @click="addTodo">新增</button>
+  </div>
+
+  <!-- 待辦清單 -->
+  <div
+    v-for="todo in todos"
+    :key="todo.id"
+    class="todo-item"
+  >
+    <input type="checkbox" v-model="todo.done" />
+    <span :class="todo.done ? 'done-text' : 'normal-text'">
+      {{ todo.text }}
+    </span>
+    <button class="delete-btn" @click="removeTodo(todo.id)">刪除</button>
+  </div>
+
+  <!-- 空清單提示 -->
+  <p v-if="todos.length === 0" style="color:#aaa">還沒有待辦事項，新增一個吧！</p>
+
+  <!-- 統計 -->
+  <p class="summary" v-if="todos.length > 0">
+    共 {{ todos.length }} 項，待完成 {{ remaining }} 項
+  </p>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+Vue.createApp({
+  data() {
+    return {
+      newTodo: "",      // 輸入框的文字
+      nextId: 1,        // 用來產生不重複 id
+      todos: [
+        { id: 1, text: "學習 Vue.js 基礎", done: true },
+        { id: 2, text: "完成待辦清單專案", done: false },
+        { id: 3, text: "繼續學習 Vue 進階功能", done: false }
+      ]
+    }
+  },
+  computed: {
+    // 計算未完成的數量
+    remaining() {
+      return this.todos.filter(todo => !todo.done).length
+    }
+  },
+  methods: {
+    // 新增待辦事項
+    addTodo() {
+      const text = this.newTodo.trim()
+      if (!text) return          // 空白就不新增
+      this.nextId++
+      this.todos.push({
+        id: this.nextId,
+        text: text,
+        done: false
+      })
+      this.newTodo = ""          // 清空輸入框
+    },
+    // 刪除待辦事項
+    removeTodo(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id)
+    }
+  }
+}).mount("#app")
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
