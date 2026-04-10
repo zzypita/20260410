@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>我的第一個 Vue 頁面</title>
+</head>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+  <p>姓名：{{ name }}</p>
+  <p>年齡：{{ age }}</p>
+  <p>自我介紹：{{ name }} 今年 {{ age }} 歲</p>
+</div>
+
+<script>
+Vue.createApp({
+  data() {
+    return {
+      name: "小華",
+      age: 20
+    }
+  }
+}).mount("#app")
+</script>
