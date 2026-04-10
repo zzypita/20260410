@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js 學習歷程 - 課程目錄</title>
+    <style>
+        :root {
+            --sidebar-width: 300px;
+            --primary-color: #42b983;
+            --dark-bg: #2c3e50;
+            --light-bg: #f8f9fa;
+        }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: "Segoe UI", "Microsoft JhengHei", sans-serif; overflow: hidden; }
+        
+        /* 側邊欄樣式 */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background-color: var(--dark-bg);
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .sidebar-header {
+            padding: 30px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .student-info {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        h1 { font-size: 1.4rem; margin: 0; color: #fff; }
+
+        nav { flex: 1; overflow-y: auto; padding: 20px 0; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 5px; }
+        
+        a {
+            text-decoration: none;
+            color: #bdc3c7;
+            display: block;
+            padding: 12px 25px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            border-left: 4px solid transparent;
+        }
+
+        a:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .ex-num { font-weight: bold; margin-right: 8px; font-family: monospace; }
+
+        /* 主內容區 */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            height: 100vh;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        /* 初始提示 */
+        .welcome-msg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #95a5a6;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>Vue.js 練習作品集</h1>
+            <div class="student-info">學號：413730572</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="ex1/index.html" target="content-frame"><span class="ex-num">01</span> 基礎計數器</a></li>
+                <li><a href="ex2/index.html" target="content-frame"><span class="ex-num">02</span> 資料插值與屬性</a></li>
+                <li><a href="ex3/index.html" target="content-frame"><span class="ex-num">03</span> 方法與重設功能</a></li>
+                <li><a href="ex4/index.html" target="content-frame"><span class="ex-num">04</span> 雙向資料綁定</a></li>
+                <li><a href="ex5/index.html" target="content-frame"><span class="ex-num">05</span> 條件渲染 (v-if)</a></li>
+                <li><a href="ex6/index.html" target="content-frame"><span class="ex-num">06</span> 列表渲染 (v-for)</a></li>
+                <li><a href="ex7/index.html" target="content-frame"><span class="ex-num">07</span> 計算屬性</a></li>
+                <li><a href="ex8/index.html" target="content-frame"><span class="ex-num">08</span> 待辦事項清單</a></li>
+                <li><a href="ex9/index.html" target="content-frame"><span class="ex-num">09</span> 練習 9</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="welcome-msg">
+            <h2>請從左側選單選擇練習項目</h2>
+            <p>作品將會顯示在此區域</p>
+        </div>
+        <iframe name="content-frame" src="ex1/index.html"></iframe>
+    </div>
+</body>
+</html>
