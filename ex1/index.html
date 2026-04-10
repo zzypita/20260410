@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>我的第一個 Vue 頁面</title>
+</head>
+<body>
+
+  <div id="app">
+    <h1>{{ title }}</h1>
+    <p>目前計數：{{ count }}</p>
+    <button @click="count++">點我 +1</button>
+  </div>
+
+  <!-- 引入 Vue -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          title: "Hello Vue！",
+          count: 0
+        }
+      }
+    }).mount("#app")
+  </script>
+
+</body>
+</html>
